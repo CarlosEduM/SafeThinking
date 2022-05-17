@@ -1,27 +1,22 @@
-# Prints the main view on terminal
-def main_view
-  system 'cls'
-  puts('Hello, what you want to do?')
-  puts('1 - Type a new phrase')
-  puts('2 - Save a new Safe Word')
-  puts('0 - exit')
-  print('R: ')
-
-  gets.to_i
-end
+require './safe_thinking_views'
+require './safe_words'
+require './controller'
 
 def main
-  operation = main_view
+  controller = Controller.new
+  loop do
+    option = controller.home
 
-  case operation
-  when 0
-    system 'cls'
-    puts('Goodbye')
-    exit
-  when 1
-    system 'cls'
-  else
-    print('Response out of the options')
+    break if option.zero?
+
+    case option
+    when 1
+      puts controller.new_safe_thinking
+    when 2
+      puts controller.new_safe_word
+    end
+
+    system 'pause'
   end
 end
 
