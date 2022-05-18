@@ -25,6 +25,7 @@ class Controller
   def new_safe_word
     new_safe_word = SafeThinkingViews.new_safe_word_view
     @safe_thinking.add_a_new_safe_word(new_safe_word[:dirty_word], new_safe_word[:safe_word])
+    @safe_thinking_service.save_safe_words(@safe_thinking.safe_words_dictionary)
   end
 
   def out_of_options

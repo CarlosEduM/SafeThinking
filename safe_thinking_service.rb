@@ -10,8 +10,7 @@ class SafeThinkingService
     @file_to_safe_thinking = file_to_safe_thinking
   end
 
-  attr_reader :safe_thinking
-
+  # save a state of safe words
   def save_safe_words(safe_words)
     File.open(@file_to_safe_words, 'w') do |safe_words_file|
       safe_words_file << JSON.pretty_generate(safe_words)
