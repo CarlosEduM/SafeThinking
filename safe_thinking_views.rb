@@ -18,6 +18,7 @@ class SafeThinkingViews
     puts('Goodbye')
   end
 
+  # Prints the view to type a new think
   def self.new_safe_thinking_view
     clear_view
     puts('What is your new think?')
@@ -26,6 +27,7 @@ class SafeThinkingViews
     gets.to_s.strip
   end
 
+  # Prints a view to type one new word safe
   def self.new_safe_word_view
     clear_view
     puts('What is your dirty word?')
@@ -36,9 +38,19 @@ class SafeThinkingViews
     print('R: ')
     safe_word = gets.to_s.strip
 
-    { 'dirty_word' => dirty_word, 'safe_word' => safe_word }
+    { dirty_word: dirty_word, safe_word: safe_word }
   end
 
+  def self.out_of_options_view
+    clear_view
+    puts('Option out of available options')
+  end
+
+  def self.response_view(output)
+    puts("Output: #{output}")
+  end
+
+  # Clean the view
   def self.clear_view
     system('cls')
     system('clear')

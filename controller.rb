@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 require './safe_thinking_views'
-require './safe_words'
+require './safe_thinking_service'
 
 # Control all processes
 class Controller
-  def initialize
-    @safe_words = SafeWords.new
+  def initialize(file_to_safe_words, file_to_safe_thinking)
+    @safe_thinking_service = SafeThinkingService.new(file_to_safe_words, file_to_safe_thinking)
+    @safe_thinking = @safe_thinking_service.safe_words
   end
 
   # Call a main view
@@ -14,13 +17,17 @@ class Controller
 
   # Make a new safe thinking
   def new_safe_thinking
-    new_think = SafeThinkingViews.new_safe_thinking_view
-    @safe_words.sub_dirty_words_from(new_think)
+    new_thinking = SafeThinkingViews.new_safe_thinking_view
+    SafeThinkingViews.response_view(@safe_thinking.new_safe_thinking(new_thinking))
   end
 
   # Add a new safe word
   def new_safe_word
     new_safe_word = SafeThinkingViews.new_safe_word_view
-    @safe_words.add_a_new_safe_word(new_safe_word['dirty_word'], new_safe_word['safe_word'])
+    @safe_thinking.add_a_new_safe_word(new_safe_word[:dirty_word], new_safe_word[:safe_word])
+  end
+
+  def out_of_options
+    SafeThinkingViews.out_of_options_view
   end
 end
