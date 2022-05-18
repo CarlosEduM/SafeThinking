@@ -17,6 +17,7 @@ class SafeThinkingService
     end
   end
 
+  # Get the safe words from a file if exists, else just create a new SafeThinking object
   def safe_words
     if File.exist?(@file_to_safe_words)
       SafeThinking.new(JSON.parse(File.open(@file_to_safe_words, 'r', &:read)))

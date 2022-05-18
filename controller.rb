@@ -28,6 +28,7 @@ class Controller
     @safe_thinking_service.save_safe_words(@safe_thinking.safe_words_dictionary)
   end
 
+  # Say when don't has a option for it in script
   def out_of_options
     SafeThinkingViews.out_of_options_view
   end

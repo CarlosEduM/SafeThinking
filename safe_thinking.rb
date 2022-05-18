@@ -16,6 +16,7 @@ class SafeThinking
     @safe_words_dictionary[dirty_word] = safe_word
   end
 
+  # Makes a thinking a new safe thinking
   def new_safe_thinking(thinking)
     words = thinking.split(' ')
 

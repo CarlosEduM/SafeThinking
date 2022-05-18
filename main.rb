@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require './safe_thinking_views'
 require './safe_thinking'
 require './controller'
 require './app_constants'
 
+# Redirect to the option choised
 def redirect_to_option(option, controller)
   case option
   when 1

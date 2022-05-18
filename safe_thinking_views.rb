@@ -41,11 +41,13 @@ class SafeThinkingViews
     { dirty_word: dirty_word, safe_word: safe_word }
   end
 
+  # Prints a view when the option is out of the available options
   def self.out_of_options_view
     clear_view
     puts('Option out of available options')
   end
 
+  # Prints the outputs
   def self.response_view(output)
     puts("Output: #{output}")
   end
